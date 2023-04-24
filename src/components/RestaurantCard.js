@@ -1,6 +1,7 @@
 import React from 'react'
 import { IMG_CDN_URL } from '../utils/constant';
 
+
 const RestaurantCard = ({resData}) => {
   return (
     <div className='p-2 m-2 w-52 flex flex-col border-2 border-black'>

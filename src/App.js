@@ -8,14 +8,23 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Instamart from "./components/Instamart";
+import { useState } from "react";
+import UserContext from "./utils/UserContext";
 
 function App() {
+  const [user,setUser]=useState({
+    name:"Anubhav Tyagi",
+    email:"anubhavworkmail07@gmail.com"
+  })
   return (
-    <>
+    <UserContext.Provider value={{
+    user:user,
+    setUser:setUser
+    }}>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </UserContext.Provider>
   );
 }
 export const appRouter = createBrowserRouter([
