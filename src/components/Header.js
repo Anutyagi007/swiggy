@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import userContext from '../utils/UserContext'
+import {useSelector} from "react-redux"
 const Header = () => {
     const AuthenticateUser=()=>{
         return false
     }
     const[isLoggedIn,setIsLoggedIn]=useState(AuthenticateUser)
     const {user}=useContext(userContext);
+    const cartItems=useSelector(store=>store.cart.items)
   return (
     <div className='flex justify-between border-2 border-black'>
         <div>
@@ -18,7 +20,7 @@ const Header = () => {
              <Link to="/about"><li className='m-2 p-2'>About</li></Link>
              <Link to="/contact"><li className='m-2 p-2'>Contact</li></Link>
              <Link to="/instamart"><li className='m-2 p-2'>Instamart</li></Link>
-             <Link><li className='m-2 p-2'>Cart</li></Link>
+             <Link to="/cart"><li className='m-2 p-2'>Cart-{cartItems.length}</li></Link>
             </ul>
         </div>
         {user.name}

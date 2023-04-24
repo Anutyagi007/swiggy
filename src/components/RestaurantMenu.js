@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const RestaurantMenu = () => {
   const params = useParams();
   const { resId } = params;
   const [resMenu, setResMenu] = useState([]);
   const [res, setRes] = useState([]);
+  const dispatch=useDispatch();
   useEffect(() => {
     getRestaurantInfo();
   });
@@ -16,12 +19,14 @@ const RestaurantMenu = () => {
         resId
     );
     const json = await data.json();
-    console.log(json.data);
     setRes(json.data.cards[0].card.card.info);
     setResMenu(
       json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
         .itemCards
     );
+  }
+  const handleaddItem=(item)=>{
+    dispatch(addItem(item))
   }
   return (
     <div>
@@ -49,7 +54,7 @@ const RestaurantMenu = () => {
             />{" "}
             <span className="p-2 m-2">{item.card.info.name}</span>{" "}
             <span className="p-2 m-2">{item.card.info.price / 100}</span>{" "}
-            <button className="bg-pink-300 p-2 m-2 rounded-md">Add Item</button>{" "}
+            <button onClick={()=>{handleaddItem(item)}} className="bg-pink-300 p-2 m-2 rounded-md">Add Item</button>{" "}
             <button className="bg-pink-300 p-2 m-2 rounded-md">
               Remove Item
             </button>

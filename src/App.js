@@ -10,21 +10,27 @@ import Profile from "./components/Profile";
 import Instamart from "./components/Instamart";
 import { useState } from "react";
 import UserContext from "./utils/UserContext";
-
+import {Provider} from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 function App() {
-  const [user,setUser]=useState({
-    name:"Anubhav Tyagi",
-    email:"anubhavworkmail07@gmail.com"
-  })
+  const [user, setUser] = useState({
+    name: "Anubhav Tyagi",
+    email: "anubhavworkmail07@gmail.com",
+  });
   return (
-    <UserContext.Provider value={{
-    user:user,
-    setUser:setUser
-    }}>
-      <Header />
-      <Outlet />
-      <Footer />
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
+    </Provider>
   );
 }
 export const appRouter = createBrowserRouter([
@@ -54,6 +60,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: <Instamart />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurant/:resId",
