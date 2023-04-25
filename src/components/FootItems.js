@@ -13,7 +13,7 @@ const FoodItems = ({
         <img src={IMG_CDN_URL+imageId} className='w-248 h-24' alt="" />
         <h2 className='font-bold'>{name}</h2>
         <h3 className='font-semibold'>{category}</h3>
-        <h4>Price :-{price/100} stars</h4>
+        <h4>Price :-{price/100}</h4>
     </div>
   )
 }
