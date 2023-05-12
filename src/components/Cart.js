@@ -16,6 +16,7 @@ const Cart = () => {
         <button className='bg-pink-300 rounded-md text-white p-2 m-2' onClick={()=>{handleClearCart()}}>Clear</button>
         <div className='flex'>
         {
+          
             cartItems.map(item=><FoodItems key={item.card.info.id} {...item.card.info}/>)
         }
         </div>
