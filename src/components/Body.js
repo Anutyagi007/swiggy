@@ -25,16 +25,17 @@ const Body = () => {
   },[])
 
   async function getRestaurants(){
-    const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING")
+    const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6628779&lng=77.4648192&page_type=DESKTOP_WEB_LISTING")
     const json= await data.json()
     setRestaurants(json.data.cards[2].data.data.cards)
     setFilterres(json.data.cards[2].data.data.cards)
+    console.log(json.data.cards[2].data.data.cards)
   }
   
   return (
     restaurants.length===0? (<Shimmer/>):
     <div >
-      <div className='p-2 m-2 flex justify-between'>
+      <div className='p-2 m-2 flex justify-evenly'>
         <div>
         <input type="text" placeholder='Search'className=' ml-20 p-2 rounded w-60' value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
           <button className='bg-pink-300 rounded-md w-20 text-white m-2 p-2' onClick={()=>{

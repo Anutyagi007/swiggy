@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
   const dispatch=useDispatch();
   useEffect(() => {
     getRestaurantInfo();
-  });
+  },[]);
   async function getRestaurantInfo() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5270362&lng=77.13593279999999&restaurantId=" +
@@ -24,6 +24,8 @@ const RestaurantMenu = () => {
       json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
         .itemCards
     );
+    console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
+      .itemCards)
   }
   const handleaddItem=(item)=>{
     dispatch(addItem(item))
