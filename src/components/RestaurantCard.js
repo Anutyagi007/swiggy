@@ -4,7 +4,7 @@ import {AiTwotoneStar} from "react-icons/ai"
 
 const RestaurantCard = ({ resData }) => {
   return (
-    <div className="p-2 m-2 w-60 flex flex-col border-2 border-gray-200 rounded-lg hover:shadow-xl hover:border-gray-300">
+    <div className="p-2 m-2 w-60 flex flex-col border-2 border-gray-200 rounded-lg hover:shadow-xl hover:border-gray-300 mx-6 my-4">
       <div className="h-48">
       <img
         src={IMG_CDN_URL + resData.data.cloudinaryImageId}
