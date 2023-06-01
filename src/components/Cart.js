@@ -28,9 +28,6 @@ const Cart = () => {
           )
         })
         }
-        {cartItems.reduce((acc,curr,i,cartItems)=>{
-            return <h1>{acc+curr.card.info.price}</h1>
-        })}
         </div>
     </div>
   )
