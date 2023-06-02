@@ -9,11 +9,11 @@ const FoodItems = ({
     price
 }) => {
   return (
-    <div className='p-2 m-2 w-52 flex flex-col border-2 border-black'>
-        <img src={IMG_CDN_URL+imageId} className='w-248 h-24' alt="" />
-        <h2 className='font-bold'>{name}</h2>
-        <h3 className='font-semibold'>{category}</h3>
-        <h4>Price :-{price/100}</h4>
+    <div className='p-2 m-2 w-52 flex flex-col border-2 border-black rounded-lg'>
+        <img src={IMG_CDN_URL+imageId} className='w-248 h-24 rounded-md' alt="" />
+        <h2 className='font-semibold'>{name}</h2>
+        <h3 className='font-light'>{category}</h3>
+        <h4>₹{price/100}</h4>
     </div>
   )
 }
